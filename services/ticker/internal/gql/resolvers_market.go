@@ -69,17 +69,17 @@ func (r *resolver) Ticker(
 }
 
 // validateNumHoursAgo validates if the numHoursAgo parameter is within an acceptable
-// time range (at most 168 hours ago = 7 days)
+// time range (at most 672 hours ago = 28 days)
 func validateNumHoursAgo(n *int32) (int, error) {
 	if n == nil {
 		return 24, nil // default numHours = 24
 	}
 
-	if *n <= 168 {
+	if *n <= 672 {
 		return int(*n), nil
 	}
 
-	return 0, errors.New("numHoursAgo cannot be greater than 168 (7 days)")
+	return 0, errors.New("numHoursAgo cannot be greater than 672 (28 days)")
 }
 
 // dbMarketToPartialMarket converts a tickerdb.PartialMarket to a *partialMarket
